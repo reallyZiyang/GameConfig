@@ -9,22 +9,22 @@ public class GameManager : MonoBehaviour
         Events events = new Events();
         events.defineEvent();
 
-        EventDefine.subscribeEvent(this, "GAME_START", new System.Action(() => { gameStart(); }));
-        EventDefine.subscribeEvent(this, "GAME_OVER", new System.Action(() => { gameOver(); }));
+        EventDefine.subscribeEvent(this, "GAME_START", new System.Action<object[]>((parameters) => { gameStart((System.DateTime)parameters[0]); }));
+        EventDefine.subscribeEvent(this, "GAME_OVER", new System.Action<object[]>((parameters) => { gameOver((System.DateTime)parameters[0]); }));
     }
 
     private void Start()
     {
-        EventDefine.CallEvent("GAME_START");
+        EventDefine.CallEvent("GAME_START", System.DateTime.Now);
     }
 
-    protected virtual void gameStart()
+    protected virtual void gameStart(System.DateTime curTime)
     {
-        Debug.Log("GAME_START");
+        Debug.Log("GAME_START:" + curTime);
     }
 
-    protected virtual void gameOver()
+    protected virtual void gameOver(System.DateTime curTime)
     {
-        Debug.Log("GAME_OVER");
+        Debug.Log("GAME_OVER:" + curTime);
     }
 }

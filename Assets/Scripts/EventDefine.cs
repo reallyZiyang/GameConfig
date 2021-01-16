@@ -40,7 +40,7 @@ public static class EventDefine
     /// <param name="obj">物体</param>
     /// <param name="eventName">事件</param>
     /// <param name="action">回调</param>
-    public static void subscribeEvent(Object obj, string eventName, System.Action func)
+    public static void subscribeEvent(Object obj, string eventName, System.Action<object[]> func)
     {
         EventManager.subscribeEvent(obj, eventName, func);
     }
@@ -59,12 +59,12 @@ public static class EventDefine
     /// 派发事件
     /// </summary>
     /// <param name="eventName">事件</param>
-    public static void CallEvent(string eventName)
+    public static void CallEvent(string eventName, params object[] parameters)
     {
         if (!events.Contains(eventName))
             return;
 
-        EventManager.event2Func(eventName);
+        EventManager.event2Func(eventName, parameters);
     }
 
 }

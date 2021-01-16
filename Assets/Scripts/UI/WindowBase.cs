@@ -59,7 +59,7 @@ public class WindowBase : MonoBehaviour
     /// <param name="obj">物体</param>
     /// <param name="eventName">事件</param>
     /// <param name="action">回调</param>
-    public void subscribe(Transform child, string eventName, System.Action func)
+    public void subscribe(Transform child, string eventName, System.Action<object[]> func)
     {
         if (child == null || string.IsNullOrEmpty(eventName))
             return;
