@@ -68,6 +68,8 @@
     <Compile Include="Assets\Scripts\EventManager.cs" />
     <Compile Include="Assets\Scripts\Events.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\UI\InputEventCheck.cs" />
+    <Compile Include="Assets\Scripts\UI\UIEvent.cs" />
     <Compile Include="Assets\Scripts\UI\UIManager.cs" />
     <Compile Include="Assets\Scripts\UI\WindowBase.cs" />
     <Reference Include="UnityEngine">

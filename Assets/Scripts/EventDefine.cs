@@ -32,6 +32,7 @@ public static class EventDefine
     public static void registerEvent(string eventName)
     {
         events.Add(eventName);
+        EventManager.registerUIEvent(eventName);
     }
 
     /// <summary>
@@ -43,6 +44,17 @@ public static class EventDefine
     public static void subscribeEvent(Object obj, string eventName, System.Action<object[]> func)
     {
         EventManager.subscribeEvent(obj, eventName, func);
+    }
+
+    /// <summary>
+    /// 订阅事件
+    /// </summary>
+    /// <param name="obj">物体</param>
+    /// <param name="eventName">事件</param>
+    /// <param name="action">回调</param>
+    public static void subscribeEvent(Object obj, UIEvent eventName, System.Action<object[]> func)
+    {
+        EventManager.subscribeEvent(obj, eventName.ToString(), func);
     }
 
     /// <summary>
@@ -65,6 +77,18 @@ public static class EventDefine
             return;
 
         EventManager.event2Func(eventName, parameters);
+    }
+
+    /// <summary>
+    /// 派发事件
+    /// </summary>
+    /// <param name="eventName">事件</param>
+    public static void CallEvent(UIEvent eventName, Object obj, params object[] parameters)
+    {
+        if (!events.Contains(eventName.ToString()) || obj == null)
+            return;
+        
+        EventManager.event2Func(eventName, obj, parameters);
     }
 
 }

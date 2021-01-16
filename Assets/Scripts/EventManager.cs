@@ -7,7 +7,12 @@ public class EventManager : MonoBehaviour
 
     private void Awake()
     {
-        
+
+    }
+
+    public void registerUIEvent(string eventName)
+    {
+        eventsCalls[eventName] = new Dictionary<Object, System.Action<object[]>>();
     }
 
     /// <summary>
@@ -18,11 +23,6 @@ public class EventManager : MonoBehaviour
     /// <param name="action">回调</param>
     public void subscribeEvent(Object obj, string eventName, System.Action<object[]> func)
     {
-        if (!eventsCalls.ContainsKey(eventName))
-        {
-            eventsCalls.Add(eventName, new Dictionary<Object, System.Action<object[]>>());
-        }
-
         eventsCalls[eventName].Add(obj, func);
     }
 
@@ -56,6 +56,23 @@ public class EventManager : MonoBehaviour
         foreach (var func in functions)
         {
             func(parameters);
+        }
+    }
+
+    /// <summary>
+    /// 根据事件调用回调
+    /// </summary>
+    /// <param name="eventName">事件</param>
+    public void event2Func(UIEvent eventName, Object obj, params object[] parameters)
+    {
+        var objs = eventsCalls[eventName.ToString()].Keys;
+        foreach (var _obj in objs)
+        {
+            if (_obj == obj)
+            {
+                eventsCalls[eventName.ToString()][_obj](parameters);
+                return;
+            }
         }
     }
 

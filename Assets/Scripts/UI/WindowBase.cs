@@ -59,9 +59,9 @@ public class WindowBase : MonoBehaviour
     /// <param name="obj">物体</param>
     /// <param name="eventName">事件</param>
     /// <param name="action">回调</param>
-    public void subscribe(Transform child, string eventName, System.Action<object[]> func)
+    public void subscribe(Transform child, UIEvent eventName, System.Action<object[]> func)
     {
-        if (child == null || string.IsNullOrEmpty(eventName))
+        if (child == null)
             return;
         
         EventDefine.subscribeEvent(child, eventName, func);
@@ -72,12 +72,12 @@ public class WindowBase : MonoBehaviour
     /// </summary>
     /// <param name="obj">物体</param>
     /// <param name="eventName">事件</param>
-    public void unSubscribe(Transform child, string eventName)
+    public void unSubscribe(Transform child, UIEvent eventName)
     {
-        if (child == null || string.IsNullOrEmpty(eventName))
+        if (child == null)
             return;
 
-        EventDefine.unSubscribeEvent(child, eventName);
+        EventDefine.unSubscribeEvent(child, eventName.ToString());
     }
 
 }
