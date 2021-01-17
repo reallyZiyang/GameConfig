@@ -19,9 +19,20 @@ namespace GameBase
         /// </summary>
         /// <param name="childName">物体名字</param>
         /// <returns></returns>
-        public Transform child(string childName)
+        public Transform child(string childName, Transform parent = null)
         {
-            return windowPrefab.transform.Find(childName);
+            parent = parent ? parent : root();
+            Transform res = parent.Find(childName);
+            if (res)
+                return res;
+
+            for (int index = 0; index < parent.childCount; index++)
+            {
+                res = child(childName, parent.GetChild(index));
+                if (res)
+                    return res;
+            }
+            return res;
         }
 
         /// <summary>
@@ -31,6 +42,15 @@ namespace GameBase
         public Transform root()
         {
             return windowPrefab.transform;
+        }
+
+        /// <summary>
+        /// 改名字
+        /// </summary>
+        /// <param name="name">名字</param>
+        public void rename(string name)
+        {
+            root().name = name;
         }
 
         /// <summary>

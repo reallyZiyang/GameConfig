@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 3766907477
+CRC: 3662049944
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -7,7 +7,38 @@ AssetBundleManifest:
       Dependencies: {}
     Info_1:
       Name: game_base/ui_number
-      Dependencies: {}
+      Dependencies:
+        Dependency_0: game_base/number_sprites/number_3
     Info_2:
       Name: tetris/ui_gamemain
+      Dependencies: {}
+    Info_3:
+      Name: game_base/number_sprites/number_0
+      Dependencies: {}
+    Info_4:
+      Name: game_base/number_sprites/number_1
+      Dependencies: {}
+    Info_5:
+      Name: game_base/number_sprites/number_2
+      Dependencies: {}
+    Info_6:
+      Name: game_base/number_sprites/number_3
+      Dependencies: {}
+    Info_7:
+      Name: game_base/number_sprites/number_4
+      Dependencies: {}
+    Info_8:
+      Name: game_base/number_sprites/number_5
+      Dependencies: {}
+    Info_9:
+      Name: game_base/number_sprites/number_6
+      Dependencies: {}
+    Info_10:
+      Name: game_base/number_sprites/number_7
+      Dependencies: {}
+    Info_11:
+      Name: game_base/number_sprites/number_8
+      Dependencies: {}
+    Info_12:
+      Name: game_base/number_sprites/number_9
       Dependencies: {}

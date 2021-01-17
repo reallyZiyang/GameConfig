@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,10 +8,11 @@ namespace GameBase
     public class WidgetBase : MonoBehaviour
     {
         protected GameObject widgetPrefab;
-
+        protected Type selfType;
         public virtual void init()
         {
             widgetPrefab = this.gameObject;
+            selfType = GetType();
             Debug.Log(widgetPrefab.name + " init");
         }
 
@@ -19,9 +21,20 @@ namespace GameBase
         /// </summary>
         /// <param name="childName">物体名字</param>
         /// <returns></returns>
-        public Transform child(string childName)
+        public Transform child(string childName, Transform parent = null)
         {
-            return widgetPrefab.transform.Find(childName);
+            parent = parent ? parent : root();
+            Transform res = parent.Find(childName);
+            if (res)
+                return res;
+
+            for (int index = 0; index < parent.childCount; index++)
+            {
+                res = child(childName, parent.GetChild(index));
+                if (res)
+                    return res;
+            }
+            return res;
         }
 
         /// <summary>
@@ -31,6 +44,15 @@ namespace GameBase
         public Transform root()
         {
             return widgetPrefab.transform;
+        }
+
+        /// <summary>
+        /// 改名字
+        /// </summary>
+        /// <param name="name">名字</param>
+        public void rename(string name)
+        {
+            root().name = name;
         }
 
         /// <summary>
@@ -92,6 +114,11 @@ namespace GameBase
                 return;
 
             EventDefine.unSubscribeEvent(child, eventName.ToString());
+        }
+
+        public Type getType()
+        {
+            return selfType;
         }
 
     }

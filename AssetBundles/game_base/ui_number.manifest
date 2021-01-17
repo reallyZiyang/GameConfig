@@ -1,17 +1,15 @@
 ManifestFileVersion: 0
-CRC: 1782186705
+CRC: 4139615914
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 855f7e13c2e7fb0ff79fd6df848d699b
+    Hash: 37e6e04a03570e7f1da415dcb27b0107
   TypeTreeHash:
     serializedVersion: 2
-    Hash: e824159a1eb12e7f61fef97e313e4d6c
+    Hash: 639863bfdf3ad8a88b9817b71f9aff0c
 HashAppended: 0
 ClassTypes:
 - Class: 1
-  Script: {instanceID: 0}
-- Class: 28
   Script: {instanceID: 0}
 - Class: 114
   Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -27,4 +25,5 @@ ClassTypes:
   Script: {instanceID: 0}
 Assets:
 - Assets/Prefabs/UI_Number.prefab
-Dependencies: []
+Dependencies:
+- D:/Unity/Projects/GameConfig/AssetBundles/game_base/number_sprites/number_3

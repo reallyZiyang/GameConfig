@@ -15,7 +15,12 @@ namespace GameBase
             //添加UIManager组件
             if (FindObjectOfType<UIManager>() == null)
             {
-                GameObject.Find("GameManager").AddComponent<UIManager>();
+                new GameObject("GameManager").AddComponent<UIManager>();
+            }
+            //添加AssetManager组件
+            if (FindObjectOfType<AssetManager>() == null)
+            {
+                new GameObject("AssetManager").AddComponent<AssetManager>();
             }
         }
 

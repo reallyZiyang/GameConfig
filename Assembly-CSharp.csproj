@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\EventManager.cs" />
     <Compile Include="Assets\Scripts\Events.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\UI\AssetManager.cs" />
     <Compile Include="Assets\Scripts\UI\CanvasTrans.cs" />
     <Compile Include="Assets\Scripts\UI\InputEventCheck.cs" />
     <Compile Include="Assets\Scripts\UI\UIEvent.cs" />

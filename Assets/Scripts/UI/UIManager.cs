@@ -35,7 +35,7 @@ namespace GameBase
         /// <param name="name"></param>
         public void preLoadWindow(GameConfiger game, string name)
         {
-            GameObject windowPrefab = loadAsset(game, name);
+            GameObject windowPrefab = AssetManager.Instance.loadWindowAsset(game, name);
             windowsDic.Add(name, windowPrefab.GetComponent<WindowBase>());
         }
 
@@ -47,56 +47,12 @@ namespace GameBase
         {
             if (!widgetsDic.ContainsKey(name))
             {
-                GameObject widgetPrefab = loadAsset(game, name);
+                GameObject widgetPrefab = AssetManager.Instance.loadWindowAsset(game, name);
                 widgetsDic.Add(name, widgetPrefab.GetComponent<WidgetBase>());
                 if (!widgetsPool.ContainsKey(name))
                     widgetsPool.Add(name, new Queue<GameObject>());
                 widgetsPool[name].Enqueue(widgetPrefab);
             }
-        }
-
-        private GameObject loadAsset(GameConfiger game, string name)
-        {
-            bool isUI = name.Substring(0, 2).ToLower() == "ui";
-
-            if (manifest == null || manifestAB == null)
-            {
-                //manifest 加载依赖资源
-                manifestAB = AssetBundle.LoadFromFile("AssetBundles/AssetBundles");
-                manifest = manifestAB.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
-            }
-
-            string gameName = game.ToString().ToLower();
-            string prefabName = name.ToLower();
-
-            string filePath = gameName + "/" + prefabName;
-
-            string[] str;
-            try
-            {
-                //在自己目录下找
-                str = manifest.GetAllDependencies(filePath);
-            }
-            catch (System.Exception)
-            {
-                //在公共目录下找
-                gameName = GameConfiger.Game_base.ToString().ToLower();
-                filePath = gameName + "/" + prefabName;
-                str = manifest.GetAllDependencies(filePath);
-            }
-
-            foreach (string depend in str)
-            {
-                Debug.Log("<color=#FFFFFF>" + "加载[" + filePath + "]的依赖资源:" + depend + "</color>");
-                AssetBundle.LoadFromFile("Assets/AssetBundles/" + depend);
-            }
-
-            Debug.Log("<color=#FFFFFF>" + "加载[" + filePath + "]" + "</color>");
-            AssetBundle windowAB = AssetBundle.LoadFromFile("AssetBundles/" + filePath);
-            GameObject windowPrefab = windowAB.LoadAsset<GameObject>(prefabName);
-            windowPrefab = Instantiate(windowPrefab, isUI ? CanvasTrans.Root : null, false);
-            windowPrefab.SetActive(false);
-            return windowPrefab;
         }
 
         /// <summary>
@@ -143,7 +99,8 @@ namespace GameBase
                 preLoadWidget(game, name);
             }
 
-            if (widgetsPool[name].Count <= 1)
+            int count = widgetsPool[name].Count;
+            if (count <= 1)
             {
                 GameObject widgetPrefab = widgetsPool[name].Dequeue();
                 GameObject widgetClone = Instantiate(widgetPrefab);
