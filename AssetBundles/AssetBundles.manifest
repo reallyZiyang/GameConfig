@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 3238028598
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: tetris/gamemain
+      Dependencies: {}

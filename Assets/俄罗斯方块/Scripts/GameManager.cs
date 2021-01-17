@@ -4,7 +4,7 @@
     protected override void Start()
     {
         base.Start();
-        //GameBase.UIManager.Instance.getWindow("GameMain");
+        GameBase.UIManager.Instance.getWindow(GameConfiger.Tetris, "GameMain");
     }
 
 }

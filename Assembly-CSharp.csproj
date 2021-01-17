@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\UI\UIManager.cs" />
     <Compile Include="Assets\Scripts\UI\WindowBase.cs" />
     <Compile Include="Assets\俄罗斯方块\Scripts\GameManager.cs" />
+    <Compile Include="Assets\俄罗斯方块\Scripts\UI\GameMainWindow.cs" />
     <Reference Include="UnityEngine">
       <HintPath>D:/Unity/2019.4.16f1c1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

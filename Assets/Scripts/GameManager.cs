@@ -11,6 +11,12 @@ namespace GameBase
 
             EventDefine.subscribeEvent(this, "GAME_START", new System.Action<object[]>((parameters) => { gameStart((System.DateTime)parameters[0]); }));
             EventDefine.subscribeEvent(this, "GAME_OVER", new System.Action<object[]>((parameters) => { gameOver((System.DateTime)parameters[0]); }));
+            
+            //添加UIManager组件
+            if (FindObjectOfType<UIManager>() == null)
+            {
+                GameObject.Find("GameManager").AddComponent<UIManager>();
+            }
         }
 
         protected virtual void Start()
@@ -20,12 +26,12 @@ namespace GameBase
 
         protected virtual void gameStart(System.DateTime curTime)
         {
-            Debug.Log("GAME_START:" + curTime);
+            Debug.Log("<color=#FFFF00>" + "GAME_START:" + curTime + "</color>");
         }
 
         protected virtual void gameOver(System.DateTime curTime)
         {
-            Debug.Log("GAME_OVER:" + curTime);
+            Debug.Log("<color=#FFFF00>" + "GAME_OVER:" + curTime + "</color>");
         }
     }
 }
