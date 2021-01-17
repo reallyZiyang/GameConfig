@@ -10,11 +10,12 @@ namespace GameBase
 
         public virtual void init()
         {
+            windowPrefab = this.gameObject;
             Debug.Log(windowPrefab.name + " init");
         }
 
         /// <summary>
-        /// 获取子集的某个物体
+        /// 获取子级的某个物体
         /// </summary>
         /// <param name="childName">物体名字</param>
         /// <returns></returns>
@@ -46,9 +47,6 @@ namespace GameBase
             windowPrefab.SetActive(true);
         }
 
-        /// <summary>
-        /// 关闭界面
-        /// </summary>
         public void close()
         {
             onClose();
@@ -58,7 +56,13 @@ namespace GameBase
         /// <summary>
         /// 打开时调用
         /// </summary>
-        protected void onShow(params object[] parameters) { }
+        protected virtual void onShow(params object[] parameters) 
+        { 
+            if (windowPrefab == null)
+            {
+                init();
+            }
+        }
 
         /// <summary>
         /// 关闭时调用

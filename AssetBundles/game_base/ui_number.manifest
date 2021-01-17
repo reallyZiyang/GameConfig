@@ -1,0 +1,30 @@
+ManifestFileVersion: 0
+CRC: 1782186705
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 855f7e13c2e7fb0ff79fd6df848d699b
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: e824159a1eb12e7f61fef97e313e4d6c
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 2041cc605397d4642b47258d93d8166c, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+Assets:
+- Assets/Prefabs/UI_Number.prefab
+Dependencies: []

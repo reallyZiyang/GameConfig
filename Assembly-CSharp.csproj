@@ -68,12 +68,16 @@
     <Compile Include="Assets\Scripts\EventManager.cs" />
     <Compile Include="Assets\Scripts\Events.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\UI\CanvasTrans.cs" />
     <Compile Include="Assets\Scripts\UI\InputEventCheck.cs" />
     <Compile Include="Assets\Scripts\UI\UIEvent.cs" />
     <Compile Include="Assets\Scripts\UI\UIManager.cs" />
+    <Compile Include="Assets\Scripts\UI\Widget\UI_Number.cs" />
+    <Compile Include="Assets\Scripts\UI\WidgetBase.cs" />
     <Compile Include="Assets\Scripts\UI\WindowBase.cs" />
     <Compile Include="Assets\俄罗斯方块\Scripts\GameManager.cs" />
     <Compile Include="Assets\俄罗斯方块\Scripts\UI\GameMainWindow.cs" />
+    <Compile Include="Assets\俄罗斯方块\Scripts\UI\UI_GameMainWindow.cs" />
     <Reference Include="UnityEngine">
       <HintPath>D:/Unity/2019.4.16f1c1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

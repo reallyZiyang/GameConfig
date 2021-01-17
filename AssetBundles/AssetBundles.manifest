@@ -1,7 +1,13 @@
 ManifestFileVersion: 0
-CRC: 3238028598
+CRC: 3766907477
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
       Name: tetris/gamemain
+      Dependencies: {}
+    Info_1:
+      Name: game_base/ui_number
+      Dependencies: {}
+    Info_2:
+      Name: tetris/ui_gamemain
       Dependencies: {}
