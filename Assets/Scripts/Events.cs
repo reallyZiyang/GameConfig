@@ -1,18 +1,21 @@
-﻿public class Events
+﻿namespace GameBase
 {
-    /// <summary>
-    /// 注册事件
-    /// </summary>
-    /// <param name="eventName"></param>
-    public virtual void defineEvent()
+    public class Events
     {
-        EventDefine.registerEvent("GAME_START");
-        EventDefine.registerEvent("GAME_OVER");
-
-        var UIEvents = System.Enum.GetValues(typeof(UIEvent));
-        foreach (var UIEvent in UIEvents)
+        /// <summary>
+        /// 注册事件
+        /// </summary>
+        /// <param name="eventName"></param>
+        public virtual void defineEvent()
         {
-            EventDefine.registerEvent(UIEvent.ToString());
+            EventDefine.registerEvent("GAME_START");
+            EventDefine.registerEvent("GAME_OVER");
+
+            var UIEvents = System.Enum.GetValues(typeof(UIEvent));
+            foreach (var UIEvent in UIEvents)
+            {
+                EventDefine.registerEvent(UIEvent.ToString());
+            }
         }
     }
 }

@@ -1,6 +1,9 @@
-﻿public enum UIEvent
+﻿namespace GameBase
 {
-    EVENT_CLICK,
-    EVENT_TOUCH_DOWN,
-    EVENT_TOUCH_UP
+    public enum UIEvent
+    {
+        EVENT_CLICK,
+        EVENT_TOUCH_DOWN,
+        EVENT_TOUCH_UP
+    }
 }
