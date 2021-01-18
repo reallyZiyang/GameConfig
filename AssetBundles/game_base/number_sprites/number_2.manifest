@@ -1,0 +1,18 @@
+ManifestFileVersion: 0
+CRC: 124850053
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 619b7a28d7750ff220aaf6d42ed0aa08
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c90fc19e2679e5295d10bd00f33cb4c3
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/Cryptogene/Free Simple GUI/Sprites/Comic Style/Text/1x size/number_2.png
+Dependencies: []

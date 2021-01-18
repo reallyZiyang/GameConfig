@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public enum GameConfiger
@@ -27,8 +26,6 @@ namespace GameBase
         private Dictionary<string, WidgetBase> widgetsDic = new Dictionary<string, WidgetBase>();
         private Dictionary<string, Queue<GameObject>> widgetsPool = new Dictionary<string, Queue<GameObject>>();
 
-        private AssetBundle manifestAB;
-        private AssetBundleManifest manifest;
         /// <summary>
         /// 加载window
         /// </summary>
@@ -36,6 +33,8 @@ namespace GameBase
         public void preLoadWindow(GameConfiger game, string name)
         {
             GameObject windowPrefab = AssetManager.Instance.loadWindowAsset(game, name);
+            windowPrefab = Instantiate(windowPrefab, CanvasTrans.Root);
+            windowPrefab.SetActive(false);
             windowsDic.Add(name, windowPrefab.GetComponent<WindowBase>());
         }
 
@@ -48,6 +47,8 @@ namespace GameBase
             if (!widgetsDic.ContainsKey(name))
             {
                 GameObject widgetPrefab = AssetManager.Instance.loadWindowAsset(game, name);
+                widgetPrefab = Instantiate(widgetPrefab, CanvasTrans.Root);
+                widgetPrefab.SetActive(false);
                 widgetsDic.Add(name, widgetPrefab.GetComponent<WidgetBase>());
                 if (!widgetsPool.ContainsKey(name))
                     widgetsPool.Add(name, new Queue<GameObject>());
@@ -99,8 +100,7 @@ namespace GameBase
                 preLoadWidget(game, name);
             }
 
-            int count = widgetsPool[name].Count;
-            if (count <= 1)
+            if (widgetsPool[name].Count <= 1)
             {
                 GameObject widgetPrefab = widgetsPool[name].Dequeue();
                 GameObject widgetClone = Instantiate(widgetPrefab);
@@ -109,6 +109,7 @@ namespace GameBase
             }
 
             WidgetBase widget = widgetsPool[name].Dequeue().GetComponent<WidgetBase>();
+            //widget.rename(name);
             widget.show(parameters);
             return widget;
         }

@@ -73,24 +73,12 @@ namespace GameBase
         /// 派发事件
         /// </summary>
         /// <param name="eventName">事件</param>
-        public static void CallEvent(string eventName, params object[] parameters)
+        public static void CallEvent<T>(T eventName, params object[] parameters)
         {
-            if (!events.Contains(eventName))
+            if (!events.Contains(eventName.ToString()))
                 return;
 
             EventManager.event2Func(eventName, parameters);
-        }
-
-        /// <summary>
-        /// 派发事件
-        /// </summary>
-        /// <param name="eventName">事件</param>
-        public static void CallEvent(UIEvent eventName, Object obj, params object[] parameters)
-        {
-            if (!events.Contains(eventName.ToString()) || obj == null)
-                return;
-
-            EventManager.event2Func(eventName, obj, parameters);
         }
 
     }

@@ -8,67 +8,59 @@ namespace GameBase
 {
     public class InputEventCheck : MonoBehaviour
     {
-        Object worldCastHit;
-        Object UICastHit;
-
+        bool mouseClick = false;
         private void Awake()
         {
-            if (Object.FindObjectOfType<InputEventCheck>() != this)
+            if (FindObjectOfType<InputEventCheck>() != this)
             {
                 Destroy(this);
                 return;
             }
 
-            eventSystem = Object.FindObjectOfType<EventSystem>();
-            gra = Object.FindObjectOfType<GraphicRaycaster>();
+            eventSystem = FindObjectOfType<EventSystem>();
+            gra = FindObjectOfType<GraphicRaycaster>();
         }
 
         private void Update()
         {
             if (Input.GetMouseButtonDown(0))
             {
-                worldCastHit = mouseWorldRaycast();
-                UICastHit = mouseUIRaycast();
+                mouseClick = true;
             }
         }
 
         private void LateUpdate()
         {
-            if (UICastHit != null)
+            if (mouseClick)
             {
-                EventDefine.CallEvent(UIEvent.EVENT_TOUCH_DOWN, UICastHit, Input.mousePosition);
-            }
-            else if (worldCastHit != null)
-            {
-                EventDefine.CallEvent(UIEvent.EVENT_TOUCH_DOWN, worldCastHit, Input.mousePosition);
+                mouseWorldRaycast();
+                mouseUIRaycast();
+                mouseClick = false;
             }
 
-            worldCastHit = null;
-            UICastHit = null;
         }
 
         private Vector3 rayDir = new Vector3(0, 0, 1);
-        private Object mouseWorldRaycast()
+        private void mouseWorldRaycast()
         {
             Ray ray = new Ray(Camera.main.ScreenToWorldPoint(Input.mousePosition), rayDir * 100);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
-            {
-                return hit.collider.gameObject;
-            }
-            return null;
+            Physics.Raycast(ray, out hit);
+            if (hit.collider)
+                EventDefine.CallEvent(EntityEvent.EVENT_TOUCH_DOWN, hit.collider.gameObject, hit.collider);
         }
 
         private EventSystem eventSystem;
         private GraphicRaycaster gra;
-        private Object mouseUIRaycast()
+        private void mouseUIRaycast()
         {
             var mPointerEventData = new PointerEventData(eventSystem);
             mPointerEventData.position = Input.mousePosition;
             List<RaycastResult> results = new List<RaycastResult>();
 
             gra.Raycast(mPointerEventData, results);
-            return results.Count > 0 ? results[0].gameObject : null;
+            if (results.Count > 0)
+                EventDefine.CallEvent(UIEvent.EVENT_TOUCH_DOWN, results[0].gameObject, Input.mousePosition);
         }
 
         private void OnMouseDown()

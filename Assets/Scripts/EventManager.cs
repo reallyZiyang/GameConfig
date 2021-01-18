@@ -53,31 +53,13 @@ namespace GameBase
         /// 根据事件调用回调
         /// </summary>
         /// <param name="eventName">事件</param>
-        public void event2Func(string eventName, params object[] parameters)
+        public void event2Func<T>(T eventName, params object[] parameters)
         {
-            var functions = eventsCalls[eventName].Values;
+            var functions = eventsCalls[eventName.ToString()].Values;
             foreach (var func in functions)
             {
                 func(parameters);
             }
         }
-
-        /// <summary>
-        /// 根据事件调用回调
-        /// </summary>
-        /// <param name="eventName">事件</param>
-        public void event2Func(UIEvent eventName, Object obj, params object[] parameters)
-        {
-            var objs = eventsCalls[eventName.ToString()].Keys;
-            foreach (var _obj in objs)
-            {
-                if (_obj == obj)
-                {
-                    eventsCalls[eventName.ToString()][_obj](parameters);
-                    return;
-                }
-            }
-        }
-
     }
 }

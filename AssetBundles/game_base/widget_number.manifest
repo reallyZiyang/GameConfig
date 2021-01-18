@@ -1,0 +1,29 @@
+ManifestFileVersion: 0
+CRC: 2346821920
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: c97ee6a16c886817ffad59c1f1d57fbc
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 4b63206bd37540c9ba15f4871950a000
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 2041cc605397d4642b47258d93d8166c, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+Assets:
+- Assets/Prefabs/Widget_Number.prefab
+Dependencies:
+- D:/Unity/Projects/GameConfig/AssetBundles/game_base/number_sprites/number_3

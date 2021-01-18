@@ -1,5 +1,6 @@
 ﻿using UnityEditor;
 using System.IO;
+using UnityEngine;
 
 public class CreateAssetBundles
 {
@@ -13,5 +14,6 @@ public class CreateAssetBundles
         }
         //BuildTarget 选择build出来的AB包要使用的平台
         BuildPipeline.BuildAssetBundles(dir, BuildAssetBundleOptions.None, BuildTarget.StandaloneWindows64);
+        Debug.Log("资源打包完成");
     }
 }
